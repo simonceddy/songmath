@@ -1,0 +1,17 @@
+@tailwind base;
+
+/* put components here */
+.nav-button {
+  @apply no-underline p-2 mx-1 text-green-300 font-bold;
+}
+
+.nav-button:hover {
+  @apply underline text-yellow-300;
+}
+
+.nav-button.active {
+  @apply bg-blue-200 text-red-700;
+}
+
+@tailwind components;
+@tailwind utilities;

@@ -1,25 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route } from 'react-router-dom';
+import Layout from './components/Layout/Layout';
+import Frequencies from './containers/Frequencies';
+// import Settings from './containers/Settings';
+import BpmBeatCalculator from './containers/BpmBeatCalculator';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <Route path="/" exact>
+        <Frequencies />
+      </Route>
+      <Route path="/bpm/beats" exact>
+        <BpmBeatCalculator />
+      </Route>
+    </Layout>
   );
 }
 
