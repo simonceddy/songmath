@@ -11,7 +11,7 @@ function App() {
       <Route path="/" exact>
         <Frequencies />
       </Route>
-      <Route path="/bpm/beats" exact>
+      <Route path="/bpm" exact>
         <BpmBeatCalculator />
       </Route>
     </Layout>

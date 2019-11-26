@@ -40,7 +40,7 @@ function Frequencies({
 
   return (
     <>
-      <div className="flex flex-row justify-between mx-auto">
+      <div className="flex sm:flex-row flex-col justify-between mx-auto">
         <NoteSettings>
           <OptionRow label="Reference Frequency (Hz)">
             <SettingsInput

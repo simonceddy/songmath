@@ -23,7 +23,7 @@ function BpmBeatCalculator({
 
   return (
     <>
-      <div className="flex flex-row justify-between">
+      <div className="flex sm:flex-row flex-col justify-between">
         <div className="flex flex-col flex-1 justify-center items-center">
           <OptionRow label="BPM">
             <SettingsInput

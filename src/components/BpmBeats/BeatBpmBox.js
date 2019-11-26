@@ -14,7 +14,7 @@ function BeatBpmBox({
     >
       <div className="w-8 h-8 mx-2 flex-1 break-words">
         <img
-          src={`/songmath/static/img/${imgName}.svg`}
+          src={`static/img/${imgName}.svg`}
           alt={beat}
           style={{
             width: 'auto',
