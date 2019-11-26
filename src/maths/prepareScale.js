@@ -56,7 +56,7 @@ export default function prepareScale(refHz, options = {}, scale = CHROMATIC_SCAL
     const currentOctave = currentLoopOctave + config.lowOctave;
     // console.log((i * scale.length) / scale.length);
     const key = i - (currentLoopOctave * scale.length);
-    // console.log(key, currentLoopOctave);
+    // console.log(currentOctave);
     const currentNote = scale[key];
     notes.push({
       note: `${currentNote}${currentOctave}`,

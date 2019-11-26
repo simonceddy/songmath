@@ -2,7 +2,7 @@
 
 /* put components here */
 .nav-button {
-  @apply no-underline p-2 mx-1 text-green-300 font-bold;
+  @apply no-underline p-2 mx-2 text-green-300 font-bold;
 }
 
 .nav-button:hover {

@@ -7,7 +7,9 @@ import {
   RESET_SETTINGS_TO_DEFAULT,
   SET_CURRENT_BPM,
   SET_MS_PRECISION,
-  SET_HZ_PRECISION
+  SET_HZ_PRECISION,
+  RESET_BPM_TABLE,
+  RESET_NOTE_TABLE
 } from '../actions/actionTypes';
 
 export default function settingsReducer(state = defaultSettings, action) {
@@ -19,6 +21,7 @@ export default function settingsReducer(state = defaultSettings, action) {
     case SET_REFERENCE_FREQUENCY:
       return { ...state, referenceHz: normaliseNumber(action.payload.hz) };
     case SET_LOW_OCTAVE:
+      console.log(action);
       if (action.payload.octave > state.highOctave) {
         return {
           ...state,
@@ -38,6 +41,18 @@ export default function settingsReducer(state = defaultSettings, action) {
       return { ...state, highOctave: action.payload.octave };
     case SET_CURRENT_BPM:
       return { ...state, currentBpm: normaliseNumber(action.payload.bpm, 1) };
+    case RESET_BPM_TABLE:
+      return {
+        ...state,
+        msPrecision: defaultSettings.msPrecision,
+        currentBpm: defaultSettings.currentBpm
+      };
+    case RESET_NOTE_TABLE:
+      return {
+        ...defaultSettings,
+        msPrecision: state.msPrecision,
+        currentBpm: state.currentBpm
+      };
     case RESET_SETTINGS_TO_DEFAULT:
       return defaultSettings;
     default:

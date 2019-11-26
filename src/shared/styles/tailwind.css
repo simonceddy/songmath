@@ -604,8 +604,8 @@ video {
 .nav-button {
   text-decoration: none;
   padding: 0.5rem;
-  margin-left: 0.25rem;
-  margin-right: 0.25rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   color: #9ae6b4;
   font-weight: 700;
 }

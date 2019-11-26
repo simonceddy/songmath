@@ -7,11 +7,13 @@ import {
   setReferenceFrequency,
   setLowOctave,
   setHighOctave,
-  setHzPrecision
+  setHzPrecision,
+  resetNoteTable
 } from '../store/actions/index';
 import NoteSettings from '../components/NoteFrequencies/NoteSettings';
 import OptionRow from '../components/Settings/OptionRow';
 import SettingsInput from '../components/Settings/SettingsInput';
+import ResetBox from '../shared/components/ResetBox';
 
 function Frequencies({
   referenceHz = 440,
@@ -21,7 +23,8 @@ function Frequencies({
   setLowOct,
   setHighOct,
   precision = 3,
-  setPrecision
+  setPrecision,
+  reset
 }) {
   // console.log(referenceHz);
   const notes = useMemo(() => prepareScale(referenceHz, {
@@ -37,38 +40,41 @@ function Frequencies({
 
   return (
     <>
-      <NoteSettings>
-        <OptionRow label="Reference Frequency (Hz)">
-          <SettingsInput
-            min="0"
-            className="text-right"
-            value={referenceHz}
-            onChange={({ target }) => setRefHz(target.value || 0)}
-          />
-        </OptionRow>
-        <OptionRow label="Low Octave">
-          <SettingsInput
-            className="text-right"
-            value={lowOctave}
-            onChange={({ target }) => setLowOct(target.value)}
-          />
-        </OptionRow>
-        <OptionRow label="High Octave">
-          <SettingsInput
-            className="text-right"
-            value={highOctave}
-            onChange={({ target }) => setHighOct(target.value)}
-          />
-        </OptionRow>
-        <OptionRow label="Decimal precision">
-          <SettingsInput
-            min="0"
-            className="text-right"
-            value={precision}
-            onChange={({ target }) => setPrecision(target.value)}
-          />
-        </OptionRow>
-      </NoteSettings>
+      <div className="flex flex-row justify-between mx-auto">
+        <NoteSettings>
+          <OptionRow label="Reference Frequency (Hz)">
+            <SettingsInput
+              min="0"
+              className="text-right"
+              value={referenceHz}
+              onChange={({ target }) => setRefHz(target.value || 0)}
+            />
+          </OptionRow>
+          <OptionRow label="Low Octave">
+            <SettingsInput
+              className="text-right"
+              value={lowOctave}
+              onChange={({ target }) => setLowOct(target.value)}
+            />
+          </OptionRow>
+          <OptionRow label="High Octave">
+            <SettingsInput
+              className="text-right"
+              value={highOctave}
+              onChange={({ target }) => setHighOct(target.value)}
+            />
+          </OptionRow>
+          <OptionRow label="Decimal precision">
+            <SettingsInput
+              min="0"
+              className="text-right"
+              value={precision}
+              onChange={({ target }) => setPrecision(target.value)}
+            />
+          </OptionRow>
+        </NoteSettings>
+        <ResetBox reset={reset} />
+      </div>
       <NoteFrequencies notes={notes} />
     </>
   );
@@ -86,6 +92,7 @@ const mapDispatchToProps = (dispatch) => ({
   setLowOct: (octave) => dispatch(setLowOctave(octave)),
   setHighOct: (octave) => dispatch(setHighOctave(octave)),
   setPrecision: (precision) => dispatch(setHzPrecision(precision)),
+  reset: () => dispatch(resetNoteTable())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Frequencies);

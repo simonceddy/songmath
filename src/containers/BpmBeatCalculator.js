@@ -5,13 +5,15 @@ import { DEFAULT_BEATS } from '../support/beatmap/index';
 import SettingsInput from '../components/Settings/SettingsInput';
 import OptionRow from '../components/Settings/OptionRow';
 import BeatBpmBox from '../components/BpmBeats/BeatBpmBox';
-import { setCurrentBpm, setMsPrecision } from '../store/actions';
+import { setCurrentBpm, setMsPrecision, resetBpmTable } from '../store/actions';
+import ResetBox from '../shared/components/ResetBox';
 
 function BpmBeatCalculator({
   bpm = 120,
   setBpm,
   precision = 2,
-  setPrecision
+  setPrecision,
+  reset
 }) {
   // console.log(bpm);
   const beatLengths = useMemo(() => (
@@ -19,22 +21,27 @@ function BpmBeatCalculator({
   ), [bpm, precision]);
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <OptionRow label="BPM">
-        <SettingsInput
-          min="0"
-          value={bpm}
-          onChange={({ target }) => setBpm(target.value)}
-        />
-      </OptionRow>
-      <OptionRow label="Decimal precision">
-        <SettingsInput
-          min="0"
-          value={precision}
-          onChange={({ target }) => setPrecision(target.value)}
-        />
-      </OptionRow>
-      <div>
+    <>
+      <div className="flex flex-row justify-between">
+        <div className="flex flex-col flex-1 justify-center items-center">
+          <OptionRow label="BPM">
+            <SettingsInput
+              min="0"
+              value={bpm}
+              onChange={({ target }) => setBpm(target.value)}
+            />
+          </OptionRow>
+          <OptionRow label="Decimal precision">
+            <SettingsInput
+              min="0"
+              value={precision}
+              onChange={({ target }) => setPrecision(target.value)}
+            />
+          </OptionRow>
+        </div>
+        <ResetBox reset={reset} />
+      </div>
+      <div className="flex flex-col w-full">
         {beatLengths.map(({ duration, beat, beatLength }) => (
           <BeatBpmBox
             key={beat}
@@ -44,7 +51,7 @@ function BpmBeatCalculator({
           />
         ))}
       </div>
-    </div>
+    </>
   );
 }
 
@@ -55,7 +62,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   setBpm: (bpm) => dispatch(setCurrentBpm(bpm)),
-  setPrecision: (precision) => dispatch(setMsPrecision(precision))
+  setPrecision: (precision) => dispatch(setMsPrecision(precision)),
+  reset: () => dispatch(resetBpmTable())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BpmBeatCalculator);
