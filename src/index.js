@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import './shared/styles/tailwind.css';
 import './index.css';
@@ -11,7 +11,7 @@ import store from './store/index';
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router basename="songmath">
+    <Router basename="/">
       <App />
     </Router>
   </Provider>,
