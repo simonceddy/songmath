@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useMemo } from 'react';
 import { connect } from 'react-redux';
 import calculateBeatLength from '../maths/calculateBeatLength';
@@ -42,13 +43,8 @@ function BpmBeatCalculator({
         <ResetBox reset={reset} />
       </div>
       <div className="flex flex-col w-full">
-        {beatLengths.map(({ duration, beat, beatLength }) => (
-          <BeatBpmBox
-            key={beat}
-            beatLength={beatLength}
-            beat={beat}
-            duration={duration}
-          />
+        {beatLengths.map((beat) => (
+          <BeatBpmBox key={beat.beat} {...beat} />
         ))}
       </div>
     </>

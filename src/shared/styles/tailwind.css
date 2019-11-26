@@ -620,6 +620,32 @@ video {
   color: #c53030;
 }
 
+.reset-button {
+  padding: 0.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  text-transform: capitalize;
+  border-width: 2px;
+  font-size: 1.125rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  border-color: #2c5282;
+  background-color: #f56565;
+  color: #2c5282;
+}
+
+.reset-button:hover {
+  border-color: #9b2c2c;
+  background-color: #4299e1;
+  color: #9b2c2c;
+}
+
+.reset-button:active {
+  border-color: #000;
+  background-color: #ecc94b;
+  color: #000;
+}
+
 .container {
   width: 100%;
 }

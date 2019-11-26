@@ -11,7 +11,7 @@ import store from './store/index';
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
+    <Router basename="songmath">
       <App />
     </Router>
   </Provider>,

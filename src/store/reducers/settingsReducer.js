@@ -21,7 +21,7 @@ export default function settingsReducer(state = defaultSettings, action) {
     case SET_REFERENCE_FREQUENCY:
       return { ...state, referenceHz: normaliseNumber(action.payload.hz) };
     case SET_LOW_OCTAVE:
-      console.log(action);
+      // console.log(action);
       if (action.payload.octave > state.highOctave) {
         return {
           ...state,

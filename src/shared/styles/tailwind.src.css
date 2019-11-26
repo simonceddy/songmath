@@ -13,5 +13,17 @@
   @apply bg-blue-200 text-red-700;
 }
 
+.reset-button {
+  @apply p-2 mx-4 capitalize border-2 text-lg rounded-lg font-bold border-blue-800 bg-red-500 text-blue-800;
+}
+
+.reset-button:hover {
+  @apply border-red-800 bg-blue-500 text-red-800;
+}
+
+.reset-button:active {
+  @apply border-black bg-yellow-500 text-black;
+}
+
 @tailwind components;
 @tailwind utilities;
