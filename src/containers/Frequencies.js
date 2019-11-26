@@ -45,21 +45,18 @@ function Frequencies({
           <OptionRow label="Reference Frequency (Hz)">
             <SettingsInput
               min="0"
-              className="text-right"
               value={referenceHz}
               onChange={({ target }) => setRefHz(target.value || 0)}
             />
           </OptionRow>
           <OptionRow label="Low Octave">
             <SettingsInput
-              className="text-right"
               value={lowOctave}
               onChange={({ target }) => setLowOct(target.value)}
             />
           </OptionRow>
           <OptionRow label="High Octave">
             <SettingsInput
-              className="text-right"
               value={highOctave}
               onChange={({ target }) => setHighOct(target.value)}
             />
@@ -67,7 +64,6 @@ function Frequencies({
           <OptionRow label="Decimal precision">
             <SettingsInput
               min="0"
-              className="text-right"
               value={precision}
               onChange={({ target }) => setPrecision(target.value)}
             />
