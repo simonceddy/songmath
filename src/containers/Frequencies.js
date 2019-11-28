@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { connect } from 'react-redux';
 import NoteFrequencies from '../components/NoteFrequencies';
-// import EqualTemperedHz from '../maths/EqualTemperedHz';
+import EqualTemperedHz from '../maths/EqualTemperedHz';
 import prepareScale from '../maths/prepareScale';
 import {
   setReferenceFrequency,
@@ -27,7 +27,7 @@ function Frequencies({
   reset
 }) {
   // console.log(referenceHz);
-  const notes = useMemo(() => prepareScale(referenceHz, {
+  const notes = useMemo(() => prepareScale(new EqualTemperedHz(referenceHz, precision), {
     lowOctave,
     highOctave,
     precision

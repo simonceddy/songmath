@@ -6,7 +6,11 @@ import { DEFAULT_BEATS } from '../support/beatmap/index';
 import SettingsInput from '../components/Settings/SettingsInput';
 import OptionRow from '../components/Settings/OptionRow';
 import BeatBpmBox from '../components/BpmBeats/BeatBpmBox';
-import { setCurrentBpm, setMsPrecision, resetBpmTable } from '../store/actions';
+import {
+  setCurrentBpm,
+  setMsPrecision,
+  resetBpmTable
+} from '../store/actions';
 import ResetBox from '../shared/components/ResetBox';
 
 function BpmBeatCalculator({

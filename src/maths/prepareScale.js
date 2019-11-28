@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import EqualTemperedHz from './EqualTemperedHz';
+// import EqualTemperedHz from './EqualTemperedHz';
 import { CHROMATIC_SCALE } from '../support/scales/index';
 
 const defaultOptions = {
@@ -26,12 +26,8 @@ const defaultOptions = {
  * @param {object} options Allows overwriting default settings
  * @param {string[]} scale The scale to use. Uses chromatic scale starting at C by default.
  */
-export default function prepareScale(refHz, options = {}, scale = CHROMATIC_SCALE) {
+export default function prepareScale(referenceHz, options = {}, scale = CHROMATIC_SCALE) {
   const config = { ...defaultOptions, ...options };
-
-  const referenceHz = new EqualTemperedHz(refHz, options.precision);
-
-  // console.log(refHz);
 
   if (config.lowOctave > config.highOctave) {
     throw new Error('The low octave must be lower than the high octave');
@@ -44,7 +40,7 @@ export default function prepareScale(refHz, options = {}, scale = CHROMATIC_SCAL
   const totalSteps = octaves * scale.length;
 
   const refStep = ((config.ref.octave - config.lowOctave) * scale.length) + refNoteKey;
-  // console.log(refStep);
+
   const firstStep = 0 - refStep;
 
   let currentStep = firstStep;
@@ -54,9 +50,7 @@ export default function prepareScale(refHz, options = {}, scale = CHROMATIC_SCAL
   for (let i = 0; i < totalSteps; i++) {
     const currentLoopOctave = Math.floor(i / scale.length);
     const currentOctave = currentLoopOctave + config.lowOctave;
-    // console.log((i * scale.length) / scale.length);
     const key = i - (currentLoopOctave * scale.length);
-    // console.log(currentOctave);
     const currentNote = scale[key];
     notes.push({
       note: `${currentNote}${currentOctave}`,
